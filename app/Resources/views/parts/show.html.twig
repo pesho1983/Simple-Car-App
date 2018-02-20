@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Part</h1>
+
+    <table class="table table-bordered table-striped">
+        <tbody class="text-center">
+        <tr>
+            <th>Name</th>
+            <td>{{ part.name }}</td>
+        </tr>
+        <tr>
+            <th>Price</th>
+            <td>{{ part.price }}</td>
+        </tr>
+        <tr>
+            <th>Quantity</th>
+            <td>{{ part.quantity }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary" href="{{ path('parts_index') }}">Back to the list</a>
+
+    <a class="btn btn-default" href="{{ path('parts_edit', { 'id': part.id }) }}">Edit</a>
+
+    {{ form_start(delete_form) }}
+    <input class="btn btn-danger" type="submit" value="Delete">
+    {{ form_end(delete_form) }}
+{% endblock %}

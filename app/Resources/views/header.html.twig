@@ -1,0 +1,60 @@
+{% block header %}
+    <header>
+        <div class="navbar navbar-default" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <a href="{{ path('homepage') }}" class="navbar-brand">My Car Application</a>
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        {% if app.user %}
+                            <li>
+                                <a href="{{ path('cars_index') }}">
+                                    Cars
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('sales_index') }}">
+                                    Sales
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('customers_index') }}">
+                                    Customers
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('parts_index') }}">
+                                    Parts
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('logout') }}">
+                                    LOGOUT({{ app.user.username }})
+                                </a>
+                            </li>
+
+                        {% else %}
+                            <li>
+                                <a href="{{ path('register') }}">
+                                    REGISTER
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('user_login') }}">
+                                    LOGIN
+                                </a>
+                            </li>
+                        {% endif %}
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock %}

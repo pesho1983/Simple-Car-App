@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Sale</h1>
+
+    <table class="table-bordered table" style="table-layout: revert">
+        <tbody>
+        <tr>
+            <th>Car</th>
+            <td>{{ sale.cars }}</td>
+        </tr>
+        <tr>
+            <th>Discount</th>
+            <td>{{ sale.discount }}</td>
+        </tr>
+        </tbody>
+    </table>
+    {{ form_start(delete_form) }}
+    <a class="btn btn-primary" href="{{ path('sales_index') }}">Back to the list</a>
+
+    <a class="btn btn-default" href="{{ path('sales_edit', { 'id': sale.id }) }}">Edit</a>
+    <input class="btn btn-danger" type="submit" value="Delete">
+    {{ form_end(delete_form) }}
+{% endblock %}

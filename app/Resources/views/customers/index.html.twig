@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Customers list</h1>
+
+    <table class="table-bordered table" style="table-layout: revert">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Birth Date</th>
+            <th>Is young driver</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for customer in customers %}
+            <tr>
+                <td><a href="{{ path('customers_show', { 'id': customer.id }) }}">{{ customer.id }}</a></td>
+                <td>{{ customer.name }}</td>
+                <td>{% if customer.birthDate %}{{ customer.birthDate|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if customer.isYoungDriver %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('customers_show', { 'id': customer.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('customers_edit', { 'id': customer.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary" href="{{ path('customers_new') }}">Create a new customer</a>
+
+{% endblock %}
